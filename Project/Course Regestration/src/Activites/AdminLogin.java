@@ -59,7 +59,23 @@ public class AdminLogin {
         System.out.println("Enter the student id which needs to be removed");
         int id = in.nextInt();
         studentData.removeStudent(id);
+        System.out.println("Student removed !!");
     }
+
+    public void updateStudent(){
+        System.out.println("Enter student id");
+        int id = in.nextInt();
+        studentData.updateStudent(id);
+        System.out.println("Student details updated!");
+    }
+
+    public void getStudentByID(){
+        System.out.println("Enter student ID");
+        int id = in.nextInt();
+        studentData.getByID(id);
+    }
+
+
 
 
 
