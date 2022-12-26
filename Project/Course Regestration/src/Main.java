@@ -1,7 +1,9 @@
 import Activites.AdminLogin;
+import Activites.StudentLogin;
 import Adapters.RegistrationAdapters.RegisterUser;
+
 import java.io.IOException;
-import java.sql.*;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
@@ -24,7 +26,7 @@ public class Main {
                 // ---------------------------------  course operations -----------------------------------
 
                 System.out.println("Which operation you want to perform?\n ");
-                System.out.println("1.Course Operation \t\t 2. Student Operation");
+                System.out.println("1.Course Operation \t\t 2. Student Operation \t\t 3.Other Operations");
                 int operationType = in.nextInt();
                 if (operationType == 1) {
                     System.out.println("1.Fetch all Course Details \t\t 2.Update Course \t\t 3.Remove Course \t\t 4.Add Course \t\t 5.Get Course by id");
@@ -64,15 +66,32 @@ public class Main {
                             courseInput = in.nextInt();
                         }
                     }
-                }else if(operationType == 2){
-                    System.out.println("1.Fetch all Student Details \t\t 2.Update Course \t\t 3.Remove Student \t\t 4.Add Course \t\t 5.Get Course by id");
+                }
+                else if(operationType == 2){
+                    System.out.println("1.Fetch all Student Details \t\t 2.Update Student \t\t 3.Remove Student \t\t  \t\t 4.Get Student by id");
                     int studentInput = in.nextInt();
                     if(studentInput == 1) {
                         admin.fetchAllStudents();
+                    }else if(studentInput == 2){
+                        admin.updateStudent();
                     }
                     else if(studentInput == 3){
                         admin.removeStudent();
                     }
+                    else if(studentInput == 4){
+                        admin.getStudentByID();
+                    }
+
+                }
+                else if(operationType == 3){
+
+                    System.out.println("You can perform following operations : \n");
+                    System.out.println();
+
+                }
+                else{
+                    System.out.println("Please enter a valid input!!");
+                    System.exit(0);
                 }
             }
 
@@ -112,8 +131,28 @@ public class Main {
 
             else if(loginAs == 2){
                 // create student class and add its operations
+                StudentLogin slogin = new StudentLogin();
+                System.out.println("Enter your phone number");
                 long phone = in.nextLong();
                 if(rg.checkPhoneInDB(phone) == true){
+                    System.out.println("You can do following operations:");
+                    System.out.println("Enter your operation command:");
+                    System.out.println("\n\t\t1.check details\t\t 2.your certifications \t\t 3.opt out of course");
+
+                    int input = in.nextInt();
+                    if(input == 1){
+
+                        slogin.checkDetails(phone);
+                    }
+                    else if(input == 2){
+
+                    }
+                    else if(input == 3){
+                        System.out.println("Enter course id which you want to opt out");
+                        int id = in.nextInt();
+                        slogin.optOut(id);
+                        System.out.println("Course removed");
+                    }
                     // show studentDetails();
                 }
                 else {
@@ -138,9 +177,8 @@ public class Main {
             }
 
         } else if(login == 3){
-            System.out.println("currently we offer following courses!");
+            System.out.println("\nCurrently we offer following courses!");
             admin.fetchAllCourses();
-
         }
         else{
             System.out.println("Please enter a valid choice!!");

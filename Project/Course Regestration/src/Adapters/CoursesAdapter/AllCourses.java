@@ -64,7 +64,7 @@ Scanner in = new Scanner(System.in);
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "faiz", "faiz");
-            System.out.println("\nSelect what do you want to update\n");
+            System.out.println("\nChoose parameters which are needed to be updated\n");
             System.out.println("1.Course name \t\t 2.Course fee \t\t 3.Course Duration");
             int n = in.nextInt();
             String sql = "";
@@ -115,11 +115,11 @@ Scanner in = new Scanner(System.in);
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
 
-            System.out.println("| course ID" + "|" + "course name" + "|" + " course fee" + "|" +"course duration |");
+            System.out.println("| course ID " + "|" + " course name " + "|" + " course fee " + "|" +" course duration |");
             System.out.println("--------------------------------------------------------------");
             while (rs.next()) {
 //                int courseId = rs.getInt(1);
-                System.out.println("\t"+rs.getInt(1)+"\t\t\t"+  rs.getString(2) + "\t\t  " + rs.getInt(3) + "\t\t   " +rs.getInt(4) );
+                System.out.println("\t"+rs.getInt(1)+"\t\t\t"+  rs.getString(2) + "\t\t\t" + rs.getInt(3) + "\t\t\t  " +rs.getInt(4) );
             }
             System.out.println("--------------------------------------------------------------");
         }catch (Exception e){e.printStackTrace();}
