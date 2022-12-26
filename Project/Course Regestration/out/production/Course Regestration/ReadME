@@ -1,0 +1,24 @@
+
+// Remove this error
+
+java.sql.SQLException: Invalid column index
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:208)
+	at oracle.jdbc.driver.OraclePreparedStatement.setIntInternal(OraclePreparedStatement.java:4571)
+	at oracle.jdbc.driver.OraclePreparedStatement.setInt(OraclePreparedStatement.java:4563)
+	at Adapters.RegistrationAdapters.RegisterUser.removeCourseName(RegisterUser.java:129)
+	at Adapters.StudentAdapter.StudentData.removeStudent(StudentData.java:72)
+	at Activites.AdminLogin.removeStudent(AdminLogin.java:61)
+	at Main.main(Main.java:74)
+
+java.sql.SQLException: Invalid column index
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:208)
+	at oracle.jdbc.driver.OraclePreparedStatement.setIntInternal(OraclePreparedStatement.java:4571)
+	at oracle.jdbc.driver.OraclePreparedStatement.setInt(OraclePreparedStatement.java:4563)
+	at Adapters.RegistrationAdapters.RegisterUser.removeStudentID(RegisterUser.java:145)
+	at Adapters.StudentAdapter.StudentData.removeStudent(StudentData.java:73)
+	at Activites.AdminLogin.removeStudent(AdminLogin.java:61)
+	at Main.main(Main.java:74)
