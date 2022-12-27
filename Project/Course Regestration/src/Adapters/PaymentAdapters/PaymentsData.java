@@ -28,7 +28,6 @@ public class PaymentsData {
 
         }catch (Exception e){e.printStackTrace();}
     }
-
     public void studentsPaidFirst(){
         int count = 0;
         try {
@@ -41,15 +40,12 @@ public class PaymentsData {
                  count = rs.getInt(1);
                 System.out.println("total no of students paid first installment are : "+ count);
             }
-
             rs.close();
             statement.close();
             conn.close();
 
         }catch(Exception e){e.printStackTrace();}
     }
-
-
     public void studentsPaidBoth(){
         int count = 0;
         try {
@@ -71,8 +67,6 @@ public class PaymentsData {
         }catch(Exception e){e.printStackTrace();}
 
     }
-
-
     public void notPaidFirst(){
         int count = 0;
         try {
