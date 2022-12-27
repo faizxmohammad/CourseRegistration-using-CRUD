@@ -85,7 +85,7 @@ public class RegisterUser {
         }
 
     }
-    void insertDataIntoRegistrationTable(String value, long phone, String name, int courseID , long studentID , Date date ) throws SQLException , ClassNotFoundException {
+    public void insertDataIntoRegistrationTable(String value, long phone, String name, int courseID , long studentID , Date date ) throws SQLException , ClassNotFoundException {
 
         RegistrationIDGenerator idGenerator = new RegistrationIDGenerator();
         long id = idGenerator.generateId();
@@ -116,7 +116,6 @@ public class RegisterUser {
                 e.printStackTrace();
             }
         }
-
 
         public void removeCourseName(int id){
 

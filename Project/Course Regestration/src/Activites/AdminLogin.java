@@ -1,6 +1,7 @@
 package Activites;
 
 import Adapters.CoursesAdapter.AllCourses;
+import Adapters.PaymentAdapters.PaymentsData;
 import Adapters.StudentAdapter.StudentData;
 
 import java.io.BufferedReader;
@@ -13,6 +14,7 @@ public class AdminLogin {
     Scanner in = new Scanner(System.in);
     AllCourses ac = new AllCourses();
     StudentData studentData = new StudentData();
+    PaymentsData pdata = new PaymentsData();
 
      /*-------------------------  Course operations------------------------------ */
     public void fetchAllCourses(){
@@ -75,6 +77,33 @@ public class AdminLogin {
         studentData.getByID(id);
     }
 
+    /*-------------------------  Other operations------------------------------ */
+
+
+    public void PaymentsData(){
+        System.out.println("Enter student ID");
+        int id = in.nextInt();
+        pdata.getPaymentsData(id);
+    }
+    public void getFirstPaymentCount(){
+        pdata.studentsPaidFirst();
+    }
+
+    public void getBothPaymentsData(){
+        pdata.studentsPaidBoth();
+    }
+
+    public void notPaidFirst(){
+        pdata.notPaidFirst();
+    }
+
+    public void notPaidSecond(){
+        pdata.notPaidSecond();
+    }
+
+    public void notPaidBoth(){
+        pdata.notPaidBoth();
+    }
 
 
 

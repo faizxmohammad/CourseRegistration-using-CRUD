@@ -86,7 +86,33 @@ public class Main {
                 else if(operationType == 3){
 
                     System.out.println("You can perform following operations : \n");
-                    System.out.println();
+                    System.out.println("1.Payments data of a student \t\t 2.getFirstPaymentCount \t\t 3.getBothPaymentsData " +
+                            "\t\t4.not paid first installment \t\t 5. not paid second installment \t\t 6.not paid both installments");
+                    System.out.println("Enter your operation:- ");
+
+                    int operation  = in.nextInt();
+                    if(operation == 1){
+                        admin.PaymentsData();
+                    }
+                    else if(operation == 2){
+                        admin.getFirstPaymentCount();
+                    }
+                    else if(operation == 3){
+                        admin.getBothPaymentsData();
+                    }
+                    else if(operation == 4){
+                        admin.notPaidFirst();
+                    }
+                    else if(operation == 5){
+                        admin.notPaidSecond();
+                    }
+                    else if(operation == 6){
+                        admin.notPaidBoth();
+                    }
+                    else{
+                        System.out.println("Please enter a valid input!!");
+                        System.exit(0);
+                    }
 
                 }
                 else{
@@ -94,41 +120,6 @@ public class Main {
                     System.exit(0);
                 }
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             else if(loginAs == 2){
                 // create student class and add its operations
                 StudentLogin slogin = new StudentLogin();
@@ -184,9 +175,7 @@ public class Main {
             System.out.println("Please enter a valid choice!!");
             System.exit(0);
         }
-
         in.close();
-
 
         }
 
