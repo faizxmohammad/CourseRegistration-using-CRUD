@@ -28,13 +28,12 @@ public class PaymentsData {
 
         }catch (Exception e){e.printStackTrace();}
     }
-
     public void studentsPaidFirst(){
         int count = 0;
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "faiz", "faiz");
-            String query = "select count(*) from payments where first is not null";
+            String query = "select count(first) from payments where first is not null";
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(query);
             while(rs.next()){
@@ -48,8 +47,6 @@ public class PaymentsData {
 
         }catch(Exception e){e.printStackTrace();}
     }
-
-
     public void studentsPaidBoth(){
         int count = 0;
         try {
@@ -71,8 +68,6 @@ public class PaymentsData {
         }catch(Exception e){e.printStackTrace();}
 
     }
-
-
     public void notPaidFirst(){
         int count = 0;
         try {
@@ -92,8 +87,6 @@ public class PaymentsData {
             conn.close();
         }catch(Exception e){e.printStackTrace();}
     }
-
-
     public void notPaidSecond(){
         int count = 0;
         try {
@@ -113,7 +106,6 @@ public class PaymentsData {
 
         }catch(Exception e){e.printStackTrace();}
     }
-
     public void notPaidBoth(){
         int count = 0;
         try {
@@ -129,7 +121,75 @@ public class PaymentsData {
                 count = rs.getInt(1);
             }
             System.out.println("total no of students have not paid both installment are : "+ count);
+            rs.close();
+            statement.close();
+            conn.close();
 
+        }catch(Exception e){e.printStackTrace();}
+    }
+    public void SinglePaidStudentIDS(){
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "faiz", "faiz");
+            String query = "select sid from payments where first is not null";
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            System.out.println("Student who paid first installment are :");
+            while(rs.next()){
+                int id =  rs.getInt(1);
+                System.out.println("Student id : "+ id);
+            }
+            rs.close();
+            statement.close();
+            conn.close();
+        }catch(Exception e){e.printStackTrace();}
+    }
+    public void SinglenotPaidStudentIDS(){
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "faiz", "faiz");
+            String query = "select sid from payments where second is  null";
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            System.out.println("Student who did not paid second installment are :");
+            while(rs.next()){
+                int id =  rs.getInt(1);
+                System.out.println("Student id : "+ id);
+            }
+            rs.close();
+            statement.close();
+            conn.close();
+
+        }catch(Exception e){e.printStackTrace();}
+    }
+    public void BothPaidStudentIDS(){
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "faiz", "faiz");
+            String query = "Select sid from payments where first is not null and second is not null";
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()){
+                int id = rs.getInt(1);
+                System.out.println("Student is : "+ id);
+            }
+            rs.close();
+            statement.close();
+            conn.close();
+        }catch(Exception e){e.printStackTrace();}
+    }
+    public void BothNotPaidStudentIDS(){
+
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "faiz", "faiz");
+            String query = "Select sid from payments where first is null and second is  null";
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()){
+                int id = rs.getInt(1);
+                System.out.println("Student is : "+ id);
+            }
             rs.close();
             statement.close();
             conn.close();
@@ -138,7 +198,5 @@ public class PaymentsData {
 
 
     }
-
-
 
 }

@@ -26,7 +26,7 @@ public class Main {
                 // ---------------------------------  course operations -----------------------------------
 
                 System.out.println("Which operation you want to perform?\n ");
-                System.out.println("1.Course Operation \t\t 2. Student Operation \t\t 3.Other Operations");
+                System.out.println("1.Course Operation \t\t 2. Student Operation \t\t 3.Other Operations \t\t 4.File Operations");
                 int operationType = in.nextInt();
                 if (operationType == 1) {
                     System.out.println("1.Fetch all Course Details \t\t 2.Update Course \t\t 3.Remove Course \t\t 4.Add Course \t\t 5.Get Course by id");
@@ -49,7 +49,6 @@ public class Main {
                             admin.removeCourse();
                             break;
                         }
-
                         // Add new course
                         else if (courseInput == 4) {
                             admin.addNewCourse();
@@ -81,14 +80,15 @@ public class Main {
                     else if(studentInput == 4){
                         admin.getStudentByID();
                     }
-
                 }
                 else if(operationType == 3){
 
                     System.out.println("You can perform following operations : \n");
-                    System.out.println("1.Payments data of a student \t\t 2.getFirstPaymentCount \t\t 3.getBothPaymentsData " +
-                            "\t\t4.not paid first installment \t\t 5. not paid second installment \t\t 6.not paid both installments");
-                    System.out.println("Enter your operation:- ");
+                    System.out.println("\n\t\t1.Payments data of a student \t\t 2.getFirstPaymentCount \t\t\t 3.getBothPaymentsData " +
+                            "\t\t4.not paid first installment \n\n\t\t 5.Not paid second installment \t\t 6.not paid both installments" +
+                            "\t\t\t 7.Get Student ID's who have paid both installments \n\n\t\t 8.Get Student ID's who have not paid both installments \t\t\t 9.Get Student ID's who have paid only first installment \t\t\t " +
+                            "\n\t\t\t10.Get Student ID's who have not paid second installment");
+                    System.out.println("\nEnter your operation:- ");
 
                     int operation  = in.nextInt();
                     if(operation == 1){
@@ -109,11 +109,18 @@ public class Main {
                     else if(operation == 6){
                         admin.notPaidBoth();
                     }
+                    else if(operation == 7){admin.BothPaidStudentIDS();}
+                    else if(operation == 8){admin.BothPaymentsNotPaid();}
+                    else if(operation == 9){admin.firstPaymentPaidIDS();}
+                    else if(operation == 10){admin.SecondPaymentNotPaidIDS();}
                     else{
                         System.out.println("Please enter a valid input!!");
                         System.exit(0);
                     }
 
+                }
+                else if(operationType == 4){
+                    admin.allStudentsDataToFile();
                 }
                 else{
                     System.out.println("Please enter a valid input!!");

@@ -3,8 +3,7 @@ package Adapters.StudentAdapter;
 import Adapters.RegistrationAdapters.RegisterUser;
 import Models.Student;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +40,7 @@ public class StudentData {
                 int StudentPhone = rs.getInt(3);
                 studentList.add(new Student(StudentID, StudentName, StudentPhone));
             }
+
             statement.close();
             conn.close();
 
@@ -50,20 +50,11 @@ public class StudentData {
                 System.out.println( "\t\t" + student.getId() + "\t\t" + student.getName() + "\t\t" + student.getPhone());
             }
             System.out.println("--------------------------------------------------------------");
-
-
-
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
-
     }
-
     public void removeStudent(int id){
         RegisterUser ru = new RegisterUser();
         try {
@@ -81,7 +72,6 @@ public class StudentData {
 
         }catch (Exception e){e.printStackTrace();}
     }
-
     public void updateStudent(int id){
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -110,7 +100,6 @@ public class StudentData {
 
 
     }
-
     public void getByID(int id){
 
         try{
@@ -147,7 +136,11 @@ public class StudentData {
 
     }
 
+    public void writeToFile() throws IOException {
+        FileWriter file = new FileWriter("E:\\Spring5Learning\\Project\\Course Regestration\\src\\Files\\Students\\allStudents.txt");
 
+
+    }
 
 
 }
