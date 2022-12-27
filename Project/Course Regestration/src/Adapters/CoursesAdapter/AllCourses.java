@@ -87,7 +87,6 @@ Scanner in = new Scanner(System.in);
         }catch (Exception e){e.printStackTrace();}
 
     }
-
     public void deleteRecord(int id){
 
         try {
@@ -105,7 +104,6 @@ Scanner in = new Scanner(System.in);
         }catch (Exception e){e.printStackTrace();}
 
     }
-
     public void getByID(int id){
 
         try {
@@ -125,9 +123,6 @@ Scanner in = new Scanner(System.in);
         }catch (Exception e){e.printStackTrace();}
 
     }
-
-
-
     public ArrayList<String> getCoursesNameOnly() {
         ArrayList<String> courses = new ArrayList<>();
         try{

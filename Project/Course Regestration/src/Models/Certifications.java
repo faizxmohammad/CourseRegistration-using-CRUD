@@ -15,9 +15,6 @@ public class Certifications {
     public String getCertificateId() {
         return certificateId;
     }
-    public void setCertificateId(String certificateId) {
-        this.certificateId = certificateId;
-    }
 
     public String getCertificationName() {
         return certificationName;
