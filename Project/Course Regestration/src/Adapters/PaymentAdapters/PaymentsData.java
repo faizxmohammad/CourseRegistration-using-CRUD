@@ -40,7 +40,6 @@ public class PaymentsData {
                  count = rs.getInt(1);
                 System.out.println("total no of students paid first installment are : "+ count);
             }
-
             rs.close();
             statement.close();
             conn.close();
