@@ -4,6 +4,8 @@ package Adapters.CoursesAdapter;
 import Models.Courses;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.sql.*;
 import java.util.ArrayList;
@@ -140,6 +142,41 @@ Scanner in = new Scanner(System.in);
         return courses;
 
     }
+
+    public void AllCourses(){
+        try {
+            ArrayList<ArrayList<String>> tableData = new ArrayList<>();
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "faiz", "faiz");
+            String sql = "SELECT * from courses";
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while(rs.next()){
+                ArrayList<String> rowData = new ArrayList<>();
+                for(int col = 1 ; col <= rs.getMetaData().getColumnCount() ; col++){
+                    rowData.add(rs.getString(col));
+                }
+                tableData.add(rowData);
+            }
+            BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\Spring5Learning\\Project\\Course Regestration\\src\\Files\\Courses\\allcourses.txt"));
+            for (ArrayList<String> rowData : tableData) {
+                for (String cell : rowData) {
+                    writer.append(cell + ",");
+                }
+                writer.newLine();
+            }
+
+            writer.close();
+            rs.close();
+            statement.close();
+            conn.close();
+
+
+
+
+        }catch (Exception e){e.printStackTrace();}
+    }
+
 
 
 }

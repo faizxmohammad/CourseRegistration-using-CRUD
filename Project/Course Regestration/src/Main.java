@@ -120,7 +120,16 @@ public class Main {
 
                 }
                 else if(operationType == 4){
-                    admin.allStudentsDataToFile();
+                    System.out.println("you can do following operations");
+                    System.out.println("\n 1.Fetch all students \t\t 2. fetch all courses");
+                    System.out.println("Enter your file operation");
+                    int input = in.nextInt();
+                    if(input == 1){
+                        admin.allStudentsDataToFile();
+                    }else if(input == 2){
+                        admin.AllCourses();
+                    }
+
                 }
                 else{
                     System.out.println("Please enter a valid input!!");

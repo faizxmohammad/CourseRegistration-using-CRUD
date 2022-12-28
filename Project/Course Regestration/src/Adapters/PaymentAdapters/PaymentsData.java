@@ -17,15 +17,12 @@ public class PaymentsData {
                 String second = rs.getString("second");
                 int sid = rs.getInt("sid");
                 System.out.println(first + "\t\t\t" + second + "\t\t\t" + sid);
-
-
             }
             System.out.println("--------------------------------------------------------");
 
             rs.close();
             statement.close();
             conn.close();
-
         }catch (Exception e){e.printStackTrace();}
     }
     public void studentsPaidFirst(){
@@ -194,8 +191,6 @@ public class PaymentsData {
             conn.close();
 
         }catch(Exception e){e.printStackTrace();}
-
-
     }
 
 }

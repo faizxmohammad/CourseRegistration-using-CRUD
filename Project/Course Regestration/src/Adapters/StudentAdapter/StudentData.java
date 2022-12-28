@@ -14,7 +14,6 @@ public class StudentData {
     Student student = new Student();
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     Scanner in  = new Scanner(System.in);
-
     public void copyStudentData(long StudentID, long phone, String name) throws SQLException, ClassNotFoundException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
         Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "faiz", "faiz");
@@ -26,7 +25,6 @@ public class StudentData {
         statement.executeUpdate();
         System.out.println("inserted data into students");
     }
-
     public void fetchAll() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -37,7 +35,7 @@ public class StudentData {
             while (rs.next()) {
                 int StudentID = rs.getInt(1);
                 String StudentName = rs.getString(2);
-                int StudentPhone = rs.getInt(3);
+                long StudentPhone = rs.getLong(3);
                 studentList.add(new Student(StudentID, StudentName, StudentPhone));
             }
 
@@ -136,9 +134,42 @@ public class StudentData {
 
     }
 
-    public void writeToFile() throws IOException {
-        FileWriter file = new FileWriter("E:\\Spring5Learning\\Project\\Course Regestration\\src\\Files\\Students\\allStudents.txt");
+    public void AllStudents() throws IOException {
 
+        try {
+            ArrayList<ArrayList<String>> tableData = new ArrayList<>();
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "faiz", "faiz");
+            String sql = "SELECT * from Students";
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while(rs.next()){
+                ArrayList<String> rowData = new ArrayList<>();
+                for(int col = 1 ; col <= rs.getMetaData().getColumnCount() ; col++){
+                    rowData.add(rs.getString(col));
+                }
+                tableData.add(rowData);
+            }
+            BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\Spring5Learning\\Project\\Course Regestration\\src\\Files\\Students\\allstudents.txt"));
+            for (ArrayList<String> rowData : tableData) {
+                for (String cell : rowData) {
+                    writer.append(cell + ",");
+                }
+                writer.newLine();
+            }
+
+            writer.close();
+            rs.close();
+            statement.close();
+            conn.close();
+
+
+
+
+        }catch (Exception e){e.printStackTrace();}
+    }
+
+    public void StudentPaidFirst(){
 
     }
 

@@ -2,10 +2,10 @@ package Models;
 public class Student {
     private int id;
     private String name;
-    private int phone;
+    private long phone;
     public Student() {
     }
-    public Student(int id, String name, int phone) {
+    public Student(int id, String name, long phone) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -22,10 +22,10 @@ public class Student {
     public void setName(String name) {
         this.name = name;
     }
-    public int getPhone() {
+    public long getPhone() {
         return phone;
     }
-    public void setPhone(int phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 }

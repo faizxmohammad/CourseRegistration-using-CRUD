@@ -114,8 +114,13 @@ public class AdminLogin {
 
 
     public void allStudentsDataToFile() throws IOException {
-        studentData.writeToFile();
+        studentData.AllStudents();
     }
+    public void AllCourses() throws IOException {
+        ac.AllCourses();
+    }
+
+
 
 
 
